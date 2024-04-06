@@ -1,0 +1,20 @@
+/* GameBoard.css */
+.game-board {
+  display: grid;
+  justify-content: center; /* Center horizontally within the grid container */
+}
+
+.row {
+  display: flex;
+  justify-content: center; /* Center horizontally within the row */
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  border: solid 1px black;
+}
+
+.cell.black {
+  background-color: black;
+}

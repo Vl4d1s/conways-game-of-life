@@ -1,20 +1,25 @@
+import React from "react";
+import "./ControlPanel.css";
+
 interface ControlPanelProps {
   setRunning: (running: boolean) => void;
   running: boolean;
   resetGrid: () => void;
 }
 
-const ControlPanel = ({
+const ControlPanel: React.FC<ControlPanelProps> = ({
   setRunning,
   running,
   resetGrid,
-}: ControlPanelProps) => {
+}) => {
   return (
-    <div>
-      <button onClick={() => setRunning(!running)}>
+    <div className="control-panel">
+      <button className="control-button" onClick={() => setRunning(!running)}>
         {running ? "Pause" : "Start"}
       </button>
-      <button onClick={resetGrid}>Reset</button>
+      <button className="control-button" onClick={resetGrid}>
+        Reset
+      </button>
     </div>
   );
 };

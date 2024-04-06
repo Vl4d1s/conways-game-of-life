@@ -34,13 +34,15 @@ const App = () => {
   };
 
   return (
-    <div>
-      <ControlPanel
-        setRunning={() => setRunning(!running)}
-        running={running}
-        resetGrid={resetGrid}
-      />
-      <GameBoard grid={grid} setGrid={(grid) => setGrid(grid)} />
+    <div className="container">
+      <div>
+        <ControlPanel
+          setRunning={() => setRunning(!running)}
+          running={running}
+          resetGrid={resetGrid}
+        />
+        <GameBoard grid={grid} setGrid={(grid) => setGrid(grid)} />
+      </div>
     </div>
   );
 };
