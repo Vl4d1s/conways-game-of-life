@@ -1,6 +1,6 @@
 export const generateEmptyGrid = (
-  numRows: number,
-  numCols: number
+  numRows: number = 25,
+  numCols: number = 25
 ): number[][] => {
   const rows = [];
   for (let i = 0; i < numRows; i++) {

@@ -1,11 +1,17 @@
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #e9e9e9;
+  background-color: #ffffff;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.app-title {
+  text-align: center;
+  color: #333;
+  margin: 20px 0;
 }

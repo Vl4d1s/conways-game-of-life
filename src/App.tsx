@@ -5,13 +5,12 @@ import ControlPanel from "./components/ControlPanel/ControlPanel";
 import "./App.css";
 import { generateEmptyGrid } from "./utils/grid-utils";
 
-const numRows = 30;
-const numCols = 30;
-
-const App = () => {
-  const [grid, setGrid] = useState(() => generateEmptyGrid(numRows, numCols));
+export default function App() {
+  const [grid, setGrid] = useState(() => generateEmptyGrid());
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
+  const numRows = grid.length;
+  const numCols = grid[0].length;
 
   runningRef.current = running;
 
@@ -35,16 +34,13 @@ const App = () => {
 
   return (
     <div className="container">
-      <div>
-        <ControlPanel
-          setRunning={() => setRunning(!running)}
-          running={running}
-          resetGrid={resetGrid}
-        />
-        <GameBoard grid={grid} setGrid={(grid) => setGrid(grid)} />
-      </div>
+      <h1 className="app-title">Conway's Game of Life</h1>
+      <ControlPanel
+        setRunning={() => setRunning(!running)}
+        running={running}
+        resetGrid={resetGrid}
+      />
+      <GameBoard grid={grid} setGrid={(grid) => setGrid(grid)} />
     </div>
   );
-};
-
-export default App;
+}
