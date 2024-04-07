@@ -8,3 +8,7 @@ export const generateEmptyGrid = (
   }
   return rows;
 };
+
+export const isGridClean = (grid: number[][]) => {
+  return grid.every((row) => row.every((cell) => cell === 0));
+};

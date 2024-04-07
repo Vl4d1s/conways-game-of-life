@@ -3,7 +3,7 @@ import { runSimulationStep } from "./utils/simulation-utils";
 import GameBoard from "./components/GameBoard/GameBoard";
 import ControlPanel from "./components/ControlPanel/ControlPanel";
 import "./App.css";
-import { generateEmptyGrid } from "./utils/grid-utils";
+import { generateEmptyGrid, isGridClean } from "./utils/grid-utils";
 
 export default function App() {
   const [grid, setGrid] = useState(() => generateEmptyGrid());
@@ -32,6 +32,10 @@ export default function App() {
     setGrid(generateEmptyGrid(numRows, numCols));
   };
 
+  const generateNextGeneration = () => {
+    setGrid((currentGrid) => runSimulationStep(currentGrid));
+  };
+
   return (
     <div className="container">
       <h1 className="app-title">Conway's Game of Life</h1>
@@ -39,6 +43,8 @@ export default function App() {
         setRunning={() => setRunning(!running)}
         running={running}
         resetGrid={resetGrid}
+        nextGeneration={generateNextGeneration}
+        isGridClean={isGridClean(grid)}
       />
       <GameBoard grid={grid} setGrid={(grid) => setGrid(grid)} />
     </div>
