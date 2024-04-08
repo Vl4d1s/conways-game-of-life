@@ -1,5 +1,3 @@
-// GameBoard.tsx
-import React from "react";
 import "./GameBoard.css";
 
 export interface GameBoardProps {
@@ -7,7 +5,7 @@ export interface GameBoardProps {
   setGrid: (grid: number[][]) => void;
 }
 
-const GameBoard: React.FC<GameBoardProps> = ({ grid, setGrid }) => {
+export default function GameBoard({ grid, setGrid }: GameBoardProps) {
   const toggleGridCell = (i: number, k: number) => {
     const newGrid = [...grid];
     newGrid[i][k] = grid[i][k] ? 0 : 1;
@@ -29,6 +27,4 @@ const GameBoard: React.FC<GameBoardProps> = ({ grid, setGrid }) => {
       ))}
     </div>
   );
-};
-
-export default GameBoard;
+}

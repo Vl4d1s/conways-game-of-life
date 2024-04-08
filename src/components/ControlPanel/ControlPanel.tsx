@@ -1,4 +1,3 @@
-import React from "react";
 import "./ControlPanel.css";
 import { patterns } from "../../config";
 
@@ -11,14 +10,14 @@ export interface ControlPanelProps {
   setPattern: (pattern: string) => void;
 }
 
-const ControlPanel: React.FC<ControlPanelProps> = ({
+export default function ControlPanel({
   setRunning,
   running,
   resetGrid,
   nextGeneration,
   isGridClean,
   setPattern,
-}) => {
+}: ControlPanelProps) {
   return (
     <div className="control-panel">
       <button className="control-button" onClick={() => setRunning(!running)}>
@@ -50,6 +49,4 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       </select>
     </div>
   );
-};
-
-export default ControlPanel;
+}

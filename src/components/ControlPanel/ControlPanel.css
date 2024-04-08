@@ -31,3 +31,13 @@
 .reset-button {
   background-color: #e63946;
 }
+
+.pattern-select {
+  border: 1px solid #6d5dc6;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #6d5dc6;
+  background-color: #f7f7f7;
+  cursor: pointer;
+}

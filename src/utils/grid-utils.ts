@@ -1,3 +1,5 @@
+import { Pattern } from "../config";
+
 export const generateEmptyGrid = (
   numRows: number = 25,
   numCols: number = 25
@@ -14,7 +16,6 @@ export const isGridClean = (grid: number[][]) => {
 };
 
 export function applyPatternToGrid(
-  grid: number[][],
   pattern: Pattern,
   numRows: number,
   numCols: number

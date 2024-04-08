@@ -10,7 +10,7 @@ import {
 import { runSimulationStep } from "./utils/simulation-utils";
 import { patterns } from "./config";
 
-export default function App(): JSX.Element {
+export default function App() {
   const [grid, setGrid] = useState<number[][]>(() => generateEmptyGrid());
   const [running, setRunning] = useState<boolean>(false);
   const runningRef = useRef<boolean>(running);
@@ -42,10 +42,8 @@ export default function App(): JSX.Element {
   };
 
   const setPattern = (patternKey: string) => {
-    const pattern = patterns[patternKey];
-    setGrid((oldGrid) =>
-      applyPatternToGrid(oldGrid, pattern, numRows, numCols)
-    );
+    const pattern = patterns[patternKey as string];
+    setGrid(() => applyPatternToGrid(pattern, numRows, numCols));
   };
 
   return (
