@@ -1,26 +1,26 @@
-export const operations: number[][] = [
-  [0, 1],
-  [0, -1],
-  [1, -1],
-  [-1, 1],
-  [1, 1],
-  [-1, -1],
-  [1, 0],
-  [-1, 0],
-];
-
 export const countLiveNeighbors = (
   grid: number[][],
   rowIndex: number,
   colIndex: number
 ): number => {
+  const operations: number[][] = [
+    [0, 1],
+    [0, -1],
+    [1, -1],
+    [-1, 1],
+    [1, 1],
+    [-1, -1],
+    [1, 0],
+    [-1, 0],
+  ];
   const numRows = grid.length;
   const numCols = grid[0].length;
   let count = 0;
+
   operations.forEach(([x, y]) => {
     const newRow = rowIndex + x;
     const newCol = colIndex + y;
-    // Check if the new position is within the grid bounds
+
     if (newRow >= 0 && newRow < numRows && newCol >= 0 && newCol < numCols) {
       count += grid[newRow][newCol];
     }
@@ -58,7 +58,6 @@ export const applyDeadCellRules = (liveNeighbors: number): number => {
 };
 
 export const runSimulationStep = (grid: number[][]): number[][] => {
-  // Apply the rules to each cell in the grid and generate the new grid
   const newGrid = grid.map((row, rowIndex) =>
     row.map((_, colIndex) => determineNextState(grid, rowIndex, colIndex))
   );
