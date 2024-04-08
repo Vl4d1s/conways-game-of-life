@@ -48,7 +48,7 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1 className="app-title">Conway's Game of Life</h1>
+      <h1 className="app-title">Finonex | Conway's Game of Life</h1>
       <ControlPanel
         setRunning={() => setRunning(!running)}
         running={running}
