@@ -1,11 +1,13 @@
 import "./ControlPanel.css";
+import { patterns } from "../../config";
 
-interface ControlPanelProps {
+export interface ControlPanelProps {
   setRunning: (running: boolean) => void;
   running: boolean;
   resetGrid: () => void;
   nextGeneration: () => void;
   isGridClean: boolean;
+  setPattern: (pattern: string) => void;
 }
 
 export default function ControlPanel({
@@ -14,6 +16,7 @@ export default function ControlPanel({
   resetGrid,
   nextGeneration,
   isGridClean,
+  setPattern,
 }: ControlPanelProps) {
   return (
     <div className="control-panel">
@@ -34,6 +37,16 @@ export default function ControlPanel({
       >
         Reset
       </button>
+      <select
+        onChange={(e) => setPattern(e.target.value)}
+        className="pattern-select"
+      >
+        {Object.entries(patterns).map(([key, { name }]) => (
+          <option key={key} value={key}>
+            {name}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

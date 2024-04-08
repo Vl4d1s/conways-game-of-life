@@ -1,14 +1,19 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { runSimulationStep } from "./utils/simulation-utils";
 import GameBoard from "./components/GameBoard/GameBoard";
 import ControlPanel from "./components/ControlPanel/ControlPanel";
 import "./App.css";
-import { generateEmptyGrid, isGridClean } from "./utils/grid-utils";
+import {
+  applyPatternToGrid,
+  generateEmptyGrid,
+  isGridClean,
+} from "./utils/grid-utils";
+import { runSimulationStep } from "./utils/simulation-utils";
+import { patterns } from "./config";
 
 export default function App() {
-  const [grid, setGrid] = useState(() => generateEmptyGrid());
-  const [running, setRunning] = useState(false);
-  const runningRef = useRef(running);
+  const [grid, setGrid] = useState<number[][]>(() => generateEmptyGrid());
+  const [running, setRunning] = useState<boolean>(false);
+  const runningRef = useRef<boolean>(running);
   const numRows = grid.length;
   const numCols = grid[0].length;
 
@@ -36,17 +41,23 @@ export default function App() {
     setGrid((currentGrid) => runSimulationStep(currentGrid));
   };
 
+  const setPattern = (patternKey: string) => {
+    const pattern = patterns[patternKey as string];
+    setGrid(() => applyPatternToGrid(pattern, numRows, numCols));
+  };
+
   return (
     <div className="container">
-      <h1 className="app-title">Conway's Game of Life</h1>
+      <h1 className="app-title">Finonex | Conway's Game of Life</h1>
       <ControlPanel
         setRunning={() => setRunning(!running)}
         running={running}
         resetGrid={resetGrid}
         nextGeneration={generateNextGeneration}
         isGridClean={isGridClean(grid)}
+        setPattern={setPattern}
       />
-      <GameBoard grid={grid} setGrid={(grid) => setGrid(grid)} />
+      <GameBoard grid={grid} setGrid={setGrid} />
     </div>
   );
 }

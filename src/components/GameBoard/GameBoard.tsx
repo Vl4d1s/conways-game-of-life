@@ -1,6 +1,6 @@
 import "./GameBoard.css";
 
-interface GameBoardProps {
+export interface GameBoardProps {
   grid: number[][];
   setGrid: (grid: number[][]) => void;
 }
