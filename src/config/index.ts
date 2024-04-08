@@ -25,3 +25,26 @@ export const defaultPattern = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
+
+export type PatternKey = "Glider" | "Spaceship";
+
+export const patterns = {
+  empty: { name: "Empty", pattern: [] },
+  glider: {
+    name: "Glider",
+    pattern: [
+      [0, 1, 0],
+      [0, 0, 1],
+      [1, 1, 1],
+    ],
+  },
+  spaceship: {
+    name: "Spaceship",
+    pattern: [
+      [0, 0, 1, 1, 0],
+      [1, 1, 0, 1, 1],
+      [1, 1, 1, 1, 0],
+      [0, 1, 1, 0, 0],
+    ],
+  },
+};
